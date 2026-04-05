@@ -8,16 +8,16 @@ if __name__=="__main__":
     #audio extraction
     video_path="video3[cry].mp4"
     OUTPUT_MP3 = "output_combined.mp3"
-    src_audio=videotoaudio(video_path).convert()
+    src_text_path="source_text.json"
+    dst_text_path="translated_text.json"
+
+    videotoaudio(video_path,OUTPUT_MP3).convert()
 
     #text extraction
-    src_text=AudioTOText(src_audio).convert()
+    AudioTOText(OUTPUT_MP3,src_text_path).convert()
     #text translation
 
-    dst_text=textConversion(src_text).convert()
-    
-    #audio translation
-    # ta=TextToAudio(voice="te-IN-MohanNeural")
-    # async def main():
-    #     await ta.convert_all_to_single_file(dst_text, OUTPUT_MP3)
-    # asyncio.run(main())
+    textConversion(src_text_path,dst_text_path).convert()
+
+    output_video = "output_telugu_without_emotion.mp4"
+    AudioTOVideo(dst_text_path,video_path,output_video).convert()
