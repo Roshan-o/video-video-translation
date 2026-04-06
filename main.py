@@ -7,17 +7,19 @@ from t_a import TextToAudio
 if __name__=="__main__":
     #audio extraction
     video_path="video3[cry].mp4"
-    OUTPUT_MP3 = "output_combined.mp3"
-    src_text_path="source_text.json"
-    dst_text_path="translated_text.json"
+    OUTPUT_MP3 = "output/output_combined.mp3"
+    src_text_path="output/source_text.json"
+    dst_text_path="output/translated_text.json"
+    output_video = "output/output_telugu_without_emotion.mp4"
 
+    #audio extraction
     videotoaudio(video_path,OUTPUT_MP3).convert()
 
     #text extraction
     AudioTOText(OUTPUT_MP3,src_text_path).convert()
-    #text translation
 
+    #text to text translation
     textConversion(src_text_path,dst_text_path).convert()
 
-    output_video = "output_telugu_without_emotion.mp4"
+    #audio to video translation
     AudioTOVideo(dst_text_path,video_path,output_video).convert()

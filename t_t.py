@@ -41,6 +41,24 @@ class textConversion:
         with open(trans_txt, "w", encoding="utf-8") as f:
             json.dump(trans_seg, f, ensure_ascii=False, indent=2)
         return trans_seg
+    
+    def convert_with_sarvam(self):
+        import requests
+        url = "https://api.sarvam.ai/translate"
+    
+        payload = {
+            "input": text,
+            "source_language": source_lang,
+            "target_language": target_lang
+        }
+    
+        headers = {
+            "Authorization": "Bearer YOUR_API_KEY"
+        }
+    
+        response = requests.post(url, json=payload, headers=headers)
+        return response.json()["translated_text"]
+
 
 if __name__=="__main__":
     textConversion("source_text.json").convert()
