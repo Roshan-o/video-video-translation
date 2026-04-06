@@ -44,14 +44,15 @@ class AudioTOVideo:
             final_audio = final_audio.overlay(speech, position=start_time)
 
         # Export audio
-        final_audio_file = "final_telugu_audio.wav"
         final_audio.export(final_audio_file, format="wav")
 
         # Merge with video
+
+    def merge_with_video(self):
         command = [
             "ffmpeg",
-            "-i", video_file,
-            "-i", final_audio_file,
+            "-i", self.video_file,
+            "-i", self.final_audio_file,
             "-c:v", "copy",
             "-c:a", "aac",
             "-map", "0:v:0",
@@ -68,9 +69,17 @@ class AudioTOVideo:
 
         print("Telugu dubbed video generated!")
 
+
+    # def convert_with_sarvam(self):
+
+        
+
+
 if __name__=="__main__":
-    json_file = "translated_text.json"
+    json_file = "output/translated_text.json"
     video_file = "video3[cry].mp4"
-    output_video = "output_telugu_without_emotion.mp4"
-    AudioTOVideo(json_file,video_file,output_video).convert(json_file,video_file,output_video)
+    output_video = "output/output_telugu_without_emotion.mp4"
+    final_audio_file = "output/final_telugu_audio.wav"
+
+    AudioTOVideo(json_file,final_audio_file,video_file,output_video).convert()
 

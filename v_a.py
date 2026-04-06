@@ -1,4 +1,4 @@
-from moviepy import VideoFileClip
+from moviepy.editor import VideoFileClip
 
 class videotoaudio:
     def __init__(self,video_path,audio_path):
