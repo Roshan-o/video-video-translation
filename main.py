@@ -11,7 +11,7 @@ if __name__=="__main__":
     OUTPUT_MP3 = "output/output_combined.mp3"
     src_text_path="output/source_text.json"
     dst_text_path="output/translated_text.json"
-    output_video = "output/output_telugu_without_emotion.mp4"
+    output_video = "output/output_telugu.mp4"
 
     #audio extraction
     videotoaudio(video_path,OUTPUT_MP3).convert()
